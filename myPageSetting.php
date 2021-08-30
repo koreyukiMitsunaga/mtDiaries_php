@@ -3,7 +3,6 @@ require("header.php");
 require("require/db/dbConnect.php");
 require("require/class/class_mtPost.php");
 require("require/db/mpDB_selectRev.php");
-$test;
 ?>
 	<main>
 		<div id="setting" class="innerForm">
