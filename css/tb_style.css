@@ -1,0 +1,96 @@
+@charset "UTF-8";
+/* タブレット用 */
+@media screen and (max-width: 768px){
+    /* header */
+    header{
+        display: block;
+    }
+        
+    #hL_logo{
+        margin: 20px auto 0;
+    }
+    
+    #hL_img{
+        display: none;
+    }
+
+    #gNavi{
+        margin-bottom: 20px;
+    }
+    
+	#gNavi ul{
+        justify-content: center;
+    }
+	
+	#lNavi{
+		width: 90%;
+		margin: 0 auto;
+	}
+	
+	#lNavi ul{
+		justify-content: space-around;
+		flex-wrap: wrap;
+	}
+	
+	#lNavi li{
+		margin: 30px 10px;
+		font-size: 1.4rem;
+	}
+	
+    
+    /* index */
+    .card{
+        height: 300px;
+    }
+
+    .cL_subject_img,
+    .c_subject_img{
+        height: 90px;
+    }
+
+    .cL_subject h3,
+    .c_subject h3{
+        height: 34px;
+        font-size: 1.2rem;
+    }
+
+    .c_subject h3{
+        height: 50px;
+		overflow: hidden;
+    }
+
+    .cL_subject p,
+    .c_subject p{
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+
+    .cL_subject_text,
+    .c_subject_text{
+        height: 60px;
+    }
+	
+	.cL_subject_account{
+		height: 50px;
+		overflow: hidden;
+	}
+
+    .cL_subject_account p{
+        margin-bottom: 0.4rem;
+        font-size: 0.8rem;
+    }
+	
+	.innerForm{
+		width: 70%;
+	}
+	
+	#article{
+		width: 70%;
+	}
+	
+	/*	footer*/
+	#footer_img{
+		right: 20px;
+	}
+}
+

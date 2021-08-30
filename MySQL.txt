@@ -1,0 +1,347 @@
+//favoriteテーブルの作成
+create table favorite (f_id varchar(20) primary key, user_id varchar(20), post_id int(20));
+alter table favorite add constraint user_id foreign key (user_id) references user(user_id);
+alter table favorite add constraint post_id foreign key (post_id) references post(post_id);
+
+
+■mysqlクライアント起動
+MANPへの接続
+cd /Applications/MAMP/Library/bin
+
+mysqlの接続コマンド
+./mysql -u root -p
+（初期設定ではroot)
+
+
+■データベースの基本
+
+USER
+↓
+DATABASE
+↓
+TABLE
+↓
+FIELD
+↓
+RECORD (DATA)
+
+
+■ユーザーのパスなど
+
+root (pass root)
+myusr(pass 12345) *データーベースbasicのみ操作可能
+hyamane(pass 12345) *データーベースpracticeのの検索だけ行える
+
+
+
+■構文
+
+☆USER
+
+ユーザー一覧の確認
+select user , host from mysql.user
+
+ユーザーの作成
+grant 権限 on データーベース名.テーブル名 to ユーザー名@ホスト名 identified by ‘パスワード’
+
+ユーザーの削除
+drop user ユーザー名@ホスト名
+
+ユーザーの権限を見る
+show grants for ユーザー名@ホスト名
+
+
+/////
+
+
+☆DATABASE
+
+データベースに入る
+use データベース名
+
+データベースの確認
+show databases
+
+データベースの作成
+create database データベース名
+
+データベースの削除
+drop database データベース名
+
+
+/////
+
+
+☆TABLE
+
+テーブルの確認
+show tables
+※参照のデータベース内にいない場合は、
+from データベース名
+をつける
+
+テーブルの作成
+create table テーブル名
+(フィールド名 データ型 属性, フィールド名 データ型 属性,...)
+
+テーブルの作成（主キー設定）
+create table テーブル名
+(フィールド名 データ型 属性, ..., PRIMARY KEY (フィールド名 データ型 属性))
+または
+(フィールド名 データ型 属性 primary key,...)
+
+テーブルの削除
+drop table from テーブル名
+
+テーブル名の変更
+alter table テーブル名 rename 新しいテーブル名
+
+
+/////
+
+
+☆FIELD
+
+フィールドの確認
+show fields from テーブル名
+または
+show columns from テーブル名
+desc user
+
+フィールドの追加
+alter table テーブル名 add 追加したいフィールド名　データ型　属性　場所
+
+フィールドを消去する
+alter table テーブル名 drop フィールド名
+
+フィールド名の変更（型も同時に変更できる）
+alter table テーブル名 change 変更したいフィールド名　新フィールド名　型　属性　場所
+
+型と属性の変更
+alter table テーブル名 modify 変更したいフィールド名　型　属性　場所
+
+オートインクリメント
+alter table テーブル名 modify 変更したいフィールド名　型　auto_inclement
+
+オートインクリメントを最大値を変更する
+alter table テーブル名 auto_increment= 変更したい数値
+
+NOT NULL制約
+alter table テーブル名 modify 変更したいフィールド名　型　not null
+
+デフォルト値
+alter table テーブル名 modify 変更したいフィールド名　型　default デフォルト値
+
+
+/////
+
+
+☆RECORD (DATA)
+
+レコード値の確認
+select フィールド名, フィールド名... from テーブル名
+※全てのフィールドを参照する場合は*
+
+フィールドを複数確認する
+select フィールド名 from テーブル名 union select フィールド名 from テーブル名
+
+レコードの登録
+insert into テーブル名(フィールド名, フィールド名,...)
+values (値, 値,...)
+
+レコードの登録（フィールド名の省略　※必ずフィールド全ての数の値を入力する）
+insert into テーブル名 values(値, 値,...)
+
+レコードの更新
+update テーブル名 set フィールド名1 = 値1 , フィールド名2 = 値2 where 条件式 
+whereを入れない場合は全てのレコードに反映される
+
+レコードの削除
+delete from テーブル名 where フィールド名 = レコード
+※where以降を省略すると、テーブル内の全てのレコードを消去する
+※複数のときはandを使う
+
+
+/////
+
+
+☆PRIMARY KEY
+
+主キーの設定
+alter table テーブル名 add primary key（フィールド名, フィールド名,...)
+※主キーは複合キーとして、セットで設定することもできる
+※主キーの値は変更できない
+
+外部キーを設定する
+alter table 外部キーの属するテーブル名 add constraint キー名 foreign key  (外部キー列,...) references 主キーの属するテーブル名 (主キー列,...)
+※「constraint キー名」は、キー名を設定する命令。省略した場合は、勝手に名前がつけられる。
+※外部キーは見る側のテーブルにつける、見にこられる側が主キー
+
+
+/////
+
+
+☆SELECT
+
+レコードの抽出（重複なし）
+select distinct フィールド名, ... from テーブル名
+
+レコードの絞り込み
+select フィールド名 from テーブル名 where 条件式
+
+上記に計算式を入れ込んで検索する
+例えば
+select * from schedule where pid %2 =0;
+だと、pidが余り２が０件
+
+あいまい検索
+select フィールド名 from テーブル名 where フィールド名 like '%値%'
+
+論理演算子
+select フィールド名 from テーブル名 where 条件式 and(or) 条件式 
+
+レコードの並べ替え
+select フィールド名 from テーブル名 order by ソート条件
+※「ソート条件は、[ソートするフィールド名　並び順]」
+asc 小さい順、desc 大きい順
+
+レコードの並べ替え（件数を絞り込む）
+select フィールド名 from テーブル名 order by ソート条件 limit 開始業, 行数
+※開始業は省略化、0からカウント
+
+レコードのグループ化
+select フィールド名 from テーブル名 group by フィールド名
+
+グループ化した式をさらに計算する
+select フィールド名 from テーブル名 group by フィールド名 having 計算式
+
+レコードの集計
+select 集計式 from テーブル名
+
+レコードの集計結果に別名をつける
+select 集計式 as 別名　from テーブル名 as 別名
+
+レコードをグループ化して集計する
+select フィールド名, 集計式（集計するフィールド名) from テーブル名 group by フィールド名
+
+
+/////
+
+☆
+
+内部結合
+select フィールド名, ... from テーブル名1 inner join テーブル名2 on テーブル名1.外部キー = テーブル名2.主キー
+
+外部結合
+select フィールド名, ... from テーブル名1 left(right) outer テーブル名2 as s on テーブル名1.主キー = テーブル名2.外部キー
+
+サブクエリ
+select フィールド名, ... from テーブル名 where フィールド名 比較演算子(select命令)
+
+インデックスの作成
+create index インデックス名 on テーブル名 (フィールド名, ...)
+
+インデックスの削除
+create index インデックス名 on テーブル名
+
+EXPLAIN命令
+explain 任意のselect命令
+
+トランザクション開始
+begin
+
+トランザクションを確定して終了する
+commit
+
+トランザクションをキャンセルして終了する
+rollback
+
+
+//////////
+
+
+☆フィールドのコピー
+
+フィールドをコピーする
+create table 作成するテーブル名 like コピーするテーブル名
+
+フィールドと中身をコピーする
+create table 作成するテーブル名 select フィールド名, ... from コピーするテーブル名
+※主キー、外部キーは消える
+
+フィールドの中にデータをコピー
+insert into  テーブル名 select フィールド名, ... from コピーするテーブル名
+フィールドが異なるテーブルにコピーするときは、フィールド名を入れる
+
+
+//////////
+
+
+☆ビュー
+
+ビューを作成する
+create view 作成するビュー名 as select * from テーブル名
+
+ビューを確認する
+select * from ビュー名
+
+ビューの更新
+update ビュー名 set フィールド名 = 値
+
+show create view テーブル名
+
+alter view ビュー名 as select * from テーブル名
+
+drop view ビュー名
+
+
+/////
+
+
+☆データベースのダンプ
+
+ダンプ
+./mysqldump -u ユーザ名 -p データベース名 > 出力先のパス.sql
+※場所は右クリック + option で見れる
+※場所を指定しない場合は、MAMP/Liblary/bin に保存される
+
+展開
+※まず展開する空のデータベースを作っておく！
+.mysql -u ユーザ名 -p データベース名 < ダンプしたファイルのパス.sql
+
+
+
+☆その他
+オートインクリメントを最大値を変更する
+alter table テーブル名 auto_increment= 変更したい数値
+
++ 足す
+- 引く
+* かける
+/ 割る
+% あまり
+
+数式
+○○ = ○○
+右辺の値を左辺に入れるイメージ
+
+
+
+
+■メモ
+「と」は「,（カンマ）」
+
+テーブル構造に対する命令
+データ定義言語・データ制御言語
+create
+drop
+alter
+show
+
+レコード（データ）に対する命令
+データ操作言語
+insert
+delete
+apdate
+select
+

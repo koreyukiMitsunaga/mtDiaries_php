@@ -1,0 +1,194 @@
+@charset "UTF-8";
+/* スマホ用 */
+@media screen and (max-width: 480px){
+	input{
+		font-size:  16px;
+	}
+	
+	/*	header*/
+	#mNavi{
+		display: block;
+		position: fixed;
+		left: -150vw;
+		top: 0;
+		width: 100vw;
+		height: 100vh;
+		background-color: rgba(0,0,0,0.7);
+		padding-top: 60px;
+		z-index: 999;
+		transition: 0.3s ease-in-out;
+	}
+	#mNavi.taped{
+		left: 0;
+	}
+	#mNavi ul {
+		height: auto;
+	}
+	#mNavi ul li {
+		padding: 10px 0;
+/*		border-bottom: solid 1px #ffffff;*/
+		text-align: center;
+	}
+	#mNavi ul li:first-child {
+/*		border-top: solid 1px #ffffff;*/
+	}
+	#mNavi ul li a {
+		margin-right: 0;
+		padding-right: 0;
+		border-right: none;
+		font-size: 1.6rem;
+		color: #ffffff;
+	}
+	
+	#lNavi{
+		width: 100%;
+	}
+		
+	#lNavi li{
+		margin: 10px 10px;
+	}
+		
+	#hL_logo{
+		width: 180px;
+		margin-bottom: 20px;
+	}
+	#gNavi{
+		display: none;
+	}
+	
+	/*	index*/
+	#keyVisual{
+		display: none;
+	}
+	
+	#contentRight{
+		display: none;
+	}
+	#contentLeft{
+		width: 100%;
+		margin-right: 0;
+	}
+	#cL_subjects,
+	#c_subjects{
+		display: block;
+	}
+	.cL_subject_form.card,
+	.c_subject_form.card{
+		width: 100%;
+		height: 394px;
+	}
+	.c_subject_form.card{
+		height: 370px;
+	}
+	.cL_subject_img,
+	.c_subject_img{
+		position: relative;
+		height: 180px;
+		overflow: hidden;
+	}
+	.cL_subject_img img{
+		position: absolute;
+	}
+	.cL_subject h3,
+    .c_subject h3{
+		margin: 0 0 10px 0;
+        height: 50px;
+		overflow: hidden;
+        font-size: 1.8rem;
+		font-weight: normal;
+    }
+	.cL_subject_account img{
+		width: 44px;
+		margin-right: 15px;
+	}
+	.cL_subject p,
+    .c_subject p{
+        font-size: 1.2rem;
+    }
+	.cL_subject_text,
+	.c_subject_text{
+		height: 52px;
+		overflow: hidden;
+	}
+	
+	/*	article*/
+	#article{
+		width: 90%;
+	}
+	#a_data_other th{
+		width: 140px;
+	}
+	
+	/* search*/
+	.searchBox{
+		margin: 10px 0;
+		padding: 5px;
+		border: solid 1px #595757;
+		border-radius: 3px;
+		font-size: 1.6rem;
+		
+	}
+	#searchBtn{
+		margin-left: auto;
+	}
+	
+	/*	accountPage*/
+	#sC_head img{
+		width: 60px;
+		height: 60px;
+	}
+	#sC_head_text_name{
+		font-size: 1.6rem;
+	}
+	
+	/*ハンバーガーボタン*/
+	.trigger{
+		display: block;
+		width: 50px;
+		height: 50px;
+		background-color: rgba(0,0,0,0.6);
+		border-radius: 5px;
+		position: fixed;
+		right: 10px;
+		top: 10px;
+		z-index: 1000;
+	}
+	.trigger div{
+		position: absolute;
+		left: 10px;
+		transition: 0.5s;
+	}
+	.burger{
+		width: 30px;
+		height: 2px;
+		background: #fff;
+		border-radius: 1px;
+	}
+	.burger:nth-child(1){
+		top: 13px;
+	}
+	.burger:nth-child(2){
+		top: 24px;
+	}
+	.burger:nth-child(3){
+		top: 35px;
+	}
+	/*タップしたとき*/
+	.trigger div{
+		transition: 0.5s ease-in-out;
+	}
+	.taped .burger:nth-child(1){
+		top: 24px;
+		transform: rotate(135deg);
+	}
+	.taped .burger:nth-child(2){
+		top: 16px;
+		left: 200px;
+		opacity: 0;
+	}
+	.taped .burger:nth-child(3){
+		top: 24px;
+		transform: rotate(-135deg);
+	}
+
+}

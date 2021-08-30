@@ -1,0 +1,107 @@
+@charset "UTF-8";
+/* CSS Document */
+/* header
+================== */
+header{
+	display: block;
+	border-bottom: none;
+}
+
+#heading{
+	height: 70px;
+	background: #595757;
+}
+
+h1{
+	text-align: center;
+	line-height: 70px;
+	font-size: 2.6rem;
+	font-weight: normal;
+	color: #ffffff;
+}
+
+h2{
+	font-size: 1.8rem;
+	font-weight: normal;
+}
+
+#lNavi{
+	border-bottom: solid 3px #595757;
+}
+
+#lNavi .lNavi_hover:hover,
+#lNavi #selected{
+	border: solid 4px rgba(89,87,87,0.4);
+}
+
+/* main
+================== */
+.innerForm{
+	width: 70%;
+}
+
+.adPost{
+	width: 90%;
+}
+
+table{
+	width: 100%;
+}
+
+caption{
+	text-align: left;
+	font-size: 1.8rem;
+}
+
+th{
+	padding: 5px;
+	background: rgba(89,87,87,0.4);
+	font-weight: normal;
+
+}
+td{
+	padding: 5px;
+	font-size: 1.4rem;
+	text-align: center;
+}
+
+.accountImg{
+	width: 50px;
+}
+
+#ad_table .btn{
+	background-color: rgba(89,87,87,0.4);
+}
+
+#ad_table .btn{
+	display: inline;
+}
+
+.formBox{
+	width: 100%;
+}
+
+.post_fileBtn_text{
+	left: 20px;
+	top: 29px;
+}
+
+.ad_submit{
+	margin-left: auto;
+}
+
+.ad_submit_delete{
+	margin-left: auto;
+}
+
+
+
+
+/* footer
+================== */
+footer{
+	height: 55px;
+	background: #595757;
+	display: flex;
+	align-items: flex-end;
+}

@@ -1,0 +1,254 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.3
+-- https://www.phpmyadmin.net/
+--
+-- ホスト: localhost:3306
+-- 生成日時: 2020 年 10 月 01 日 13:41
+-- サーバのバージョン： 5.7.26
+-- PHP のバージョン: 7.4.2
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- データベース: `mtDiaries`
+--
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `contact`
+--
+
+CREATE TABLE `contact` (
+  `c_date` datetime DEFAULT NULL,
+  `c_name` varchar(20) DEFAULT NULL,
+  `c_email` varchar(20) NOT NULL,
+  `c_kind` varchar(20) DEFAULT NULL,
+  `c_title` varchar(50) DEFAULT NULL,
+  `c_text` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `contact`
+--
+
+INSERT INTO `contact` (`c_date`, `c_name`, `c_email`, `c_kind`, `c_title`, `c_text`) VALUES
+('2020-09-25 13:50:24', 'admin', 'admin@aaa.aaa', '山の日記帳の使い方', 'ああああ', 'test'),
+('2020-09-20 23:12:37', '木村', 'kimura@aaa.aaa', '山の日記帳の使い方', 'ああああ', 'あああああ'),
+('2020-09-25 02:43:57', 'passhash', 'pass@pass.pass', '山の日記帳の使い方', 'ああああ', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `favorite`
+--
+
+CREATE TABLE `favorite` (
+  `f_id` int(20) NOT NULL,
+  `user_id` varchar(20) DEFAULT NULL,
+  `post_id` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `favorite`
+--
+
+INSERT INTO `favorite` (`f_id`, `user_id`, `post_id`) VALUES
+(1, 'adminadmin', 43),
+(4, 'adminadmin', 44),
+(5, 'adminadmin', 42),
+(6, 'adminadmin', 41),
+(7, 'adminadmin', 38),
+(20, 'adminadmin', 35),
+(21, 'adminadmin', 37),
+(22, 'mitsunagaKoreyuki', 43),
+(23, 'mitsunagaKoreyuki', 38),
+(24, 'adminadmin', 36),
+(25, 'mitsunagaKoreyuki', 37),
+(38, 'toritori', 43),
+(42, 'toritori', 41);
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `mountain`
+--
+
+CREATE TABLE `mountain` (
+  `mountain` varchar(50) NOT NULL,
+  `elevation` int(20) DEFAULT NULL,
+  `place` varchar(50) DEFAULT NULL,
+  `mt_range` varchar(50) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `mountain`
+--
+
+INSERT INTO `mountain` (`mountain`, `elevation`, `place`, `mt_range`) VALUES
+('九重山', 1791, '大分', '九州山地'),
+('伊吹山', 1377, '滋賀', '伊吹山地'),
+('八経ヶ岳', 1915, '奈良', '紀伊山地'),
+('六甲山', 931, '兵庫', '六甲山系'),
+('剣山', 1955, '徳島', '四国山地'),
+('北穂高岳', 3106, '長野・岐阜', '北アルプス'),
+('大台ケ原山', 1695, '三重', '紀伊山地'),
+('大山', 1729, '鳥取', '大山山系'),
+('大雪山', 2291, '北海道', '石狩山地'),
+('奥穂高岳', 3776, '長野・岐阜', '北アルプス'),
+('宮之浦岳', 1936, '鹿児島', '屋久島'),
+('富士山', 3776, '静岡・山梨', '独立峰'),
+('屏風岳', 1825, '宮城', '蔵王連峰'),
+('岩手山', 2038, '岩手', '奥羽山脈'),
+('岩木山', 1625, '青森', '独立峰'),
+('日光白根山', 2578, '栃木・群馬', '日光火山群'),
+('燧ケ岳', 2356, '福島', '独立峰'),
+('白山', 2702, '石川', '両白山地'),
+('石鎚山', 1982, '愛媛', '四国山地'),
+('祖母山', 1756, '宮崎', '九州山地'),
+('立山', 3015, '富山', '北アルプス'),
+('蛭ヶ岳', 1673, '神奈川', '丹沢山地'),
+('雲取山', 2017, '東京', '奥多摩'),
+('高尾山', 599, '東京', '関東山地'),
+('鳥海山', 2236, '山形', '丁岳山地');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `post`
+--
+
+CREATE TABLE `post` (
+  `post_id` int(20) NOT NULL,
+  `post_date` datetime DEFAULT NULL,
+  `photo` varchar(50) DEFAULT NULL,
+  `user_id` varchar(20) DEFAULT NULL,
+  `title` varchar(34) DEFAULT NULL,
+  `mountain` varchar(50) DEFAULT NULL,
+  `entryDate` date DEFAULT NULL,
+  `descentDate` date DEFAULT NULL,
+  `weather` varchar(30) DEFAULT NULL,
+  `course1` varchar(100) DEFAULT NULL,
+  `course2` varchar(100) DEFAULT NULL,
+  `course3` varchar(100) DEFAULT NULL,
+  `time` varchar(50) DEFAULT NULL,
+  `gear` varchar(300) DEFAULT NULL,
+  `text` varchar(1000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `post`
+--
+
+INSERT INTO `post` (`post_id`, `post_date`, `photo`, `user_id`, `title`, `mountain`, `entryDate`, `descentDate`, `weather`, `course1`, `course2`, `course3`, `time`, `gear`, `text`) VALUES
+(32, '2020-09-25 02:57:28', 'postImg/imgx/img_20200925025728_9850.jpg', 'adminadmin', 'これが最初の投稿ですこれが最初の投稿です', '北穂高岳', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'テキストですテキストですテキストですテキストですテキストですテキストですテキストですテキストです'),
+(33, '2020-09-25 03:00:06', 'postImg/imgx/img_20200925030006_4287.jpg', 'mitsunagaKoreyuki', '穂高岳', '北穂高岳', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。\r\n\r\nここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。'),
+(34, '2020-09-25 03:01:07', 'postImg/imgx/img_20200925030106_5527.jpg', 'mitsunagaKoreyuki', '六甲山', '六甲山', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。'),
+(35, '2020-09-25 03:08:16', 'postImg/imgx/img_20200925030816_6699.JPG', 'mitsunagaKoreyuki', '高尾山', '高尾山', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。'),
+(36, '2020-09-25 03:10:07', 'postImg/imgx/img_20200925031007_5667.JPG', 'yamadaTaro', '富士山', '富士山', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。ここにテキストが入ります。'),
+(37, '2020-09-25 03:17:35', 'postImg/imgx/img_20200925031735_4417.JPG', 'tanakaHanako', '六甲山', '六甲山', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。ここにテキストが入ります。'),
+(38, '2020-09-25 03:20:57', 'postImg/imgx/img_20200925032057_8108.JPG', 'toritori', '穂高', '北穂高岳', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ここにテキストが入ります。'),
+(41, '2020-09-25 14:42:37', 'postImg/imgx/img_20200925150855_3191.jpg', 'mitsunagaKoreyuki', '夏の北穂高', '北穂高岳', '2020-08-01', '2020-08-03', 'はれ時々雨', '上高地〜徳沢〜横尾〜涸沢', '涸沢〜北穂高', '北穂高〜涸沢〜徳沢〜横尾〜上高地', '30時間', NULL, 'この夏北穂高岳に行ってきました。\r\n\r\n２日目は北穂高小屋付近で大雨に見舞われ、命の危険も感じましたが、そんな中雷鳥に出会い元気を取り戻し、無事北穂高小屋に到着。あいにくの天候で残念に思っていましたが、夜中にトイレに行くため外に出ると、満天の星空に囲まれとても感動しました。翌朝も快晴で、美しい槍ヶ岳がくっきりと見えました。\r\n\r\n大変なこともありましたが、結果素敵な景色に出会うことができ、行って本当によかったと思います。'),
+(42, '2020-09-25 14:47:16', 'postImg/imgx/img_20200925144715_3234.jpg', 'toritori', '六甲山でハイキング', '六甲山', '2020-09-01', NULL, 'はれ', '阪急芦屋川〜ロックガーデン〜風吹岩〜東お多福山', NULL, NULL, '10時間', NULL, '子供を連れての登山、はしゃぎ回る子供たちを追いかけ回しながら１日かけてお多福山まで行ってきました。子供たちも楽しそうだったのでよかったです。'),
+(43, '2020-09-25 14:49:08', 'postImg/imgx/img_20200925144908_6425.jpg', 'toritori', '高尾山', '高尾山', '2020-02-19', NULL, 'はれ', NULL, NULL, NULL, NULL, NULL, '家族で初めて高尾山に登りました。天候も良く、頂上からは富士山が見えて大勢の人がそれを見ていました。'),
+(44, '2020-09-25 14:55:20', 'postImg/imgx/img_20200925150811_1424.jpg', 'tanakaHanako', '布引の滝', '六甲山', '2019-12-02', NULL, 'はれ', '新神戸駅〜布引の滝〜布引貯水池', NULL, NULL, NULL, NULL, '昨年の紅葉の布引貯水池、とても素晴らしい景色でした。');
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `user`
+--
+
+CREATE TABLE `user` (
+  `regist_date` datetime DEFAULT NULL,
+  `user_id` varchar(20) NOT NULL,
+  `user_name` varchar(20) DEFAULT NULL,
+  `email` varchar(20) DEFAULT NULL,
+  `password` varchar(200) DEFAULT NULL,
+  `user_img` varchar(200) NOT NULL DEFAULT 'images/myPage.png',
+  `profile` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- テーブルのデータのダンプ `user`
+--
+
+INSERT INTO `user` (`regist_date`, `user_id`, `user_name`, `email`, `password`, `user_img`, `profile`) VALUES
+('2020-09-25 02:56:08', 'adminadmin', 'admin', 'admin@aaa.aaa', '$2y$10$Ro5Sg5gAe27lrPwiwHknauR4nHQ8S.jZcNZa6fND/YNzNPghH4FvC', 'images/myPage.png', NULL),
+('2020-09-25 02:58:52', 'mitsunagaKoreyuki', 'みつながこれゆき', 'mitsunaga@aaa.aaa', '$2y$10$vF4/gqcrfCLcYjsbUDa.Ru6gyILlvj/j561VcuY1q4TBFOvvo1ceG', 'images/myPage.png', NULL),
+('2020-09-25 03:16:21', 'tanakaHanako', '田中花子', 'tanaka@aaa.aaa', '$2y$10$kbvZxyCLj8FMoMQyf8yx3.7rLUZBCC4gQnJ/oCrtmjEGoX/ct1XDS', 'postImg/accountImg/img_20200925031651_1213.png', ''),
+('2020-09-25 03:18:56', 'toritori', '鳥好き', 'tori@aaa.aaa', '$2y$10$2N7v14kG9icQCT1off4.DejOimUS0Ry8TCMgNgj6QkyyIMpQzwjoC', 'postImg/accountImg/img_20200925032000_6938.png', '山好きの鳥好きです。'),
+('2020-09-25 03:09:03', 'yamadaTaro', '山田太郎', 'yamada@aaa.aaa', '$2y$10$LH0WMFh29R4Fz3SShYPXWOIMLRyNspiZF9RyPR1aNIBCx/GoRiqDm', 'postImg/accountImg/img_20200925031056_1456.png', '');
+
+--
+-- ダンプしたテーブルのインデックス
+--
+
+--
+-- テーブルのインデックス `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`c_email`);
+
+--
+-- テーブルのインデックス `favorite`
+--
+ALTER TABLE `favorite`
+  ADD PRIMARY KEY (`f_id`),
+  ADD KEY `user_id` (`user_id`),
+  ADD KEY `post_id` (`post_id`);
+
+--
+-- テーブルのインデックス `mountain`
+--
+ALTER TABLE `mountain`
+  ADD PRIMARY KEY (`mountain`);
+
+--
+-- テーブルのインデックス `post`
+--
+ALTER TABLE `post`
+  ADD PRIMARY KEY (`post_id`),
+  ADD KEY `post` (`user_id`),
+  ADD KEY `mountain` (`mountain`);
+
+--
+-- テーブルのインデックス `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- ダンプしたテーブルのAUTO_INCREMENT
+--
+
+--
+-- テーブルのAUTO_INCREMENT `favorite`
+--
+ALTER TABLE `favorite`
+  MODIFY `f_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- テーブルのAUTO_INCREMENT `post`
+--
+ALTER TABLE `post`
+  MODIFY `post_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+--
+-- ダンプしたテーブルの制約
+--
+
+--
+-- テーブルの制約 `favorite`
+--
+ALTER TABLE `favorite`
+  ADD CONSTRAINT `post_id` FOREIGN KEY (`post_id`) REFERENCES `post` (`post_id`),
+  ADD CONSTRAINT `user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
+
+--
+-- テーブルの制約 `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `mountain` FOREIGN KEY (`mountain`) REFERENCES `mountain` (`mountain`),
+  ADD CONSTRAINT `post` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
